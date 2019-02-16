@@ -1,0 +1,25 @@
+<?php
+include 'conexion.php';
+$sql = "DELETE FROM technician WHERE id=".$indice;
+if (mysqli_query($conn, $sql)) {
+    echo " ";
+} else {
+    echo "Error deleting record: " . mysqli_error($conn);
+}
+mysqli_close($conn);
+
+
+//para borrar el jpg
+$jpg_borrar = "img/".$indice.".jpg";
+
+if (is_file($jpg_borrar)){
+	unlink($jpg_borrar);
+	echo "Technician con id nº ".$indice." borrado satisfactoriamente.";
+} else {
+	echo "no existe imagen del technician con id nº ".$indice;
+}
+
+
+
+?>
+
